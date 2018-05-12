@@ -1,0 +1,205 @@
+>> Source:LNY Destination:LIH Start_Time:1347
+[LNY->LIH:0945->1302]
+>> Source:LNY Destination:OGG Start_Time:1121
+[LNY->HNL:0945->1015][HNL->OGG:0518->0555]
+>> Source:KOA Destination:LIH Start_Time:0517
+[KOA->LIH:0628->0805]
+>> Source:JHM Destination:KOA Start_Time:2344
+[JHM->HNL:0758->0830][HNL->KOA:0515->0558]
+>> Source:MKK Destination:ITO Start_Time:1720
+[MKK->ITO:0655->0941]
+>> Source:OGG Destination:HNL Start_Time:1132
+[OGG->HNL:0623->0657]
+>> Source:LNY Destination:ITO Start_Time:1012
+[LNY->ITO:0945->2434]
+>> Source:ITO Destination:MKK Start_Time:0517
+[ITO->MKK:1108->1430]
+>> Source:OGG Destination:LNY Start_Time:1445
+[OGG->HNL:0623->0657][HNL->LNY:0520->0550]
+>> Source:ITO Destination:LIH Start_Time:0320
+[ITO->LIH:0643->0857]
+>> Source:LNY Destination:JHM Start_Time:0258
+[LNY->HNL:0945->1015][HNL->JHM:0705->0737]
+>> Source:MKK Destination:LNY Start_Time:1652
+[MKK->HNL:0910->0935][HNL->LNY:0520->0550]
+>> Source:ITO Destination:LIH Start_Time:2156
+[ITO->LIH:0643->0857]
+>> Source:LNY Destination:MKK Start_Time:1628
+[LNY->HNL:0945->1015][HNL->MKK:0530->0555]
+>> Source:KOA Destination:ITO Start_Time:1947
+[KOA->HNL:0628->0708][HNL->ITO:0525->0616]
+>> Source:OGG Destination:LNY Start_Time:1848
+[OGG->HNL:0623->0657][HNL->LNY:0520->0550]
+>> Source:ITO Destination:HNL Start_Time:1458
+[ITO->HNL:0643->0730]
+>> Source:OGG Destination:ITO Start_Time:1617
+[OGG->ITO:0905->0941]
+>> Source:LNY Destination:OGG Start_Time:1217
+[LNY->HNL:0945->1015][HNL->OGG:0518->0555]
+>> Source:KOA Destination:LIH Start_Time:0407
+[KOA->LIH:0628->0805]
+>> Source:LNY Destination:LIH Start_Time:1345
+[LNY->LIH:0945->1302]
+>> Source:ITO Destination:HNL Start_Time:1921
+[ITO->HNL:0643->0730]
+>> Source:HNL Destination:LIH Start_Time:0448
+[HNL->LIH:0530->0607]
+>> Source:JHM Destination:LNY Start_Time:1957
+[JHM->HNL:0758->0830][HNL->LNY:0520->0550]
+>> Source:MKK Destination:LNY Start_Time:0356
+[MKK->HNL:0910->0935][HNL->LNY:0520->0550]
+>> Source:ITO Destination:LIH Start_Time:0527
+[ITO->LIH:0643->0857]
+>> Source:LIH Destination:ITO Start_Time:0948
+[LIH->ITO:0635->0831]
+>> Source:KOA Destination:LIH Start_Time:0558
+[KOA->LIH:0628->0805]
+>> Source:MKK Destination:OGG Start_Time:0601
+[MKK->OGG:0655->0720]
+>> Source:HNL Destination:MKK Start_Time:1450
+[HNL->MKK:0530->0555]
+>> Source:MKK Destination:LNY Start_Time:2004
+[MKK->HNL:0910->0935][HNL->LNY:0520->0550]
+>> Source:LNY Destination:JHM Start_Time:1848
+[LNY->HNL:0945->1015][HNL->JHM:0705->0737]
+>> Source:ITO Destination:LIH Start_Time:0501
+[ITO->LIH:0643->0857]
+>> Source:LNY Destination:MKK Start_Time:1434
+[LNY->HNL:0945->1015][HNL->MKK:0530->0555]
+>> Source:KOA Destination:OGG Start_Time:2311
+[KOA->OGG:1107->1136]
+>> Source:LIH Destination:ITO Start_Time:1036
+[LIH->ITO:0635->0831]
+>> Source:ITO Destination:JHM Start_Time:0546
+[ITO->JHM:0643->1032]
+>> Source:JHM Destination:MKK Start_Time:0538
+[JHM->HNL:0758->0830][HNL->MKK:0530->0555]
+>> Source:LNY Destination:KOA Start_Time:1420
+[LNY->HNL:0945->1015][HNL->KOA:0515->0558]
+>> Source:OGG Destination:LNY Start_Time:1229
+[OGG->HNL:0623->0657][HNL->LNY:0520->0550]
+>> Source:ITO Destination:HNL Start_Time:1710
+[ITO->HNL:0643->0730]
+>> Source:OGG Destination:LIH Start_Time:1852
+[OGG->LIH:0623->0805]
+>> Source:LIH Destination:ITO Start_Time:1339
+[LIH->ITO:0635->0831]
+>> Source:LNY Destination:KOA Start_Time:0117
+[LNY->HNL:0945->1015][HNL->KOA:0515->0558]
+>> Source:OGG Destination:MKK Start_Time:1623
+[OGG->MKK:1730->1755]
+>> Source:KOA Destination:MKK Start_Time:1312
+[KOA->MKK:0628->0850]
+>> Source:MKK Destination:LNY Start_Time:1113
+[MKK->HNL:0910->0935][HNL->LNY:0520->0550]
+>> Source:HNL Destination:KOA Start_Time:1054
+[HNL->KOA:0515->0558]
+>> Source:HNL Destination:OGG Start_Time:1409
+[HNL->OGG:0518->0555]
+>> Source:KOA Destination:LNY Start_Time:1820
+[KOA->HNL:0628->0708][HNL->LNY:0520->0550]
+>> Source:OGG Destination:ITO Start_Time:1054
+[OGG->ITO:0905->0941]
+>> Source:LIH Destination:LNY Start_Time:0009
+[LIH->LNY:0655->0925]
+>> Source:JHM Destination:HNL Start_Time:1055
+[JHM->HNL:0758->0830]
+>> Source:ITO Destination:MKK Start_Time:2037
+[ITO->MKK:1108->1430]
+>> Source:KOA Destination:ITO Start_Time:0010
+[KOA->HNL:0628->0708][HNL->ITO:0525->0616]
+>> Source:ITO Destination:MKK Start_Time:1420
+[ITO->MKK:1108->1430]
+>> Source:HNL Destination:JHM Start_Time:0945
+[HNL->JHM:0705->0737]
+>> Source:JHM Destination:LNY Start_Time:0500
+[JHM->HNL:0758->0830][HNL->LNY:0520->0550]
+>> Source:LNY Destination:OGG Start_Time:1726
+[LNY->HNL:0945->1015][HNL->OGG:0518->0555]
+>> Source:MKK Destination:LIH Start_Time:1617
+[MKK->LIH:0655->1027]
+>> Source:KOA Destination:ITO Start_Time:2236
+[KOA->HNL:0628->0708][HNL->ITO:0525->0616]
+>> Source:KOA Destination:MKK Start_Time:0828
+[KOA->OGG:1107->1136][OGG->MKK:1730->1755]
+>> Source:JHM Destination:ITO Start_Time:0627
+[JHM->ITO:0758->1038]
+>> Source:LNY Destination:OGG Start_Time:0313
+[LNY->HNL:0945->1015][HNL->OGG:0518->0555]
+>> Source:LNY Destination:OGG Start_Time:1854
+[LNY->HNL:0945->1015][HNL->OGG:0518->0555]
+>> Source:OGG Destination:LIH Start_Time:2326
+[OGG->LIH:0623->0805]
+>> Source:HNL Destination:JHM Start_Time:1617
+[HNL->JHM:0705->0737]
+>> Source:LNY Destination:HNL Start_Time:1542
+[LNY->HNL:0945->1015]
+>> Source:OGG Destination:KOA Start_Time:2152
+[OGG->KOA:0905->1037]
+>> Source:HNL Destination:KOA Start_Time:0218
+[HNL->KOA:0515->0558]
+>> Source:LNY Destination:LIH Start_Time:1812
+[LNY->LIH:0945->1302]
+>> Source:KOA Destination:ITO Start_Time:0916
+[KOA->OGG:1107->1136][OGG->ITO:0905->0941]
+>> Source:KOA Destination:ITO Start_Time:0742
+[KOA->OGG:1107->1136][OGG->ITO:0905->0941]
+>> Source:OGG Destination:KOA Start_Time:2316
+[OGG->KOA:0905->1037]
+>> Source:LNY Destination:OGG Start_Time:0918
+[LNY->HNL:0945->1015][HNL->OGG:0518->0555]
+>> Source:OGG Destination:JHM Start_Time:2318
+[OGG->LIH:0623->0805][LIH->JHM:0925->1332]
+>> Source:OGG Destination:ITO Start_Time:0557
+[OGG->ITO:0905->0941]
+>> Source:ITO Destination:LNY Start_Time:0155
+[ITO->LNY:0643->0925]
+>> Source:MKK Destination:LNY Start_Time:0244
+[MKK->HNL:0910->0935][HNL->LNY:0520->0550]
+>> Source:ITO Destination:LNY Start_Time:0631
+[ITO->LNY:0643->0925]
+>> Source:ITO Destination:HNL Start_Time:0320
+[ITO->HNL:0643->0730]
+>> Source:MKK Destination:LIH Start_Time:1546
+[MKK->LIH:0655->1027]
+>> Source:MKK Destination:ITO Start_Time:1019
+[MKK->ITO:0655->0941]
+>> Source:KOA Destination:OGG Start_Time:0900
+[KOA->OGG:1107->1136]
+>> Source:OGG Destination:MKK Start_Time:0502
+[OGG->ITO:0905->0941][ITO->MKK:1108->1430]
+>> Source:OGG Destination:MKK Start_Time:1527
+[OGG->MKK:1730->1755]
+>> Source:LIH Destination:OGG Start_Time:2202
+[LIH->OGG:0635->0812]
+>> Source:MKK Destination:OGG Start_Time:0652
+[MKK->OGG:0655->0720]
+>> Source:OGG Destination:HNL Start_Time:0400
+[OGG->HNL:0623->0657]
+>> Source:LIH Destination:KOA Start_Time:0518
+[LIH->KOA:0635->0807]
+>> Source:KOA Destination:OGG Start_Time:1258
+[KOA->OGG:1107->1136]
+>> Source:ITO Destination:HNL Start_Time:1456
+[ITO->HNL:0643->0730]
+>> Source:ITO Destination:LNY Start_Time:1621
+[ITO->LNY:0643->0925]
+>> Source:ITO Destination:LIH Start_Time:2206
+[ITO->LIH:0643->0857]
+>> Source:LIH Destination:LNY Start_Time:0706
+[LIH->LNY:0655->0925]
+>> Source:JHM Destination:OGG Start_Time:2348
+[JHM->HNL:0758->0830][HNL->OGG:0518->0555]
+>> Source:KOA Destination:LNY Start_Time:2013
+[KOA->HNL:0628->0708][HNL->LNY:0520->0550]
+>> Source:ITO Destination:HNL Start_Time:1337
+[ITO->HNL:0643->0730]
+>> Source:HNL Destination:LNY Start_Time:0509
+[HNL->LNY:0520->0550]
+>> Source:JHM Destination:ITO Start_Time:0719
+[JHM->ITO:0758->1038]
+
+Failed to find a flight schedule for 0 out of 100 customers
+Elapsed times: 1 (millsec) for planning, 12 (millisec) for scheduling
+Memory consumption: 2642440 bytes
+Total CPU time consumed by the thread: 65 (millsec)

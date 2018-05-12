@@ -1,0 +1,25 @@
+>> Source:LNY Destination:LIH Start_Time:1347
+[LNY->LIH:1435->1727]
+>> Source:LNY Destination:OGG Start_Time:1121
+[LNY->HNL:1435->1505][HNL->OGG:1650->1727]
+>> Source:KOA Destination:LIH Start_Time:0517
+[KOA->LIH:0628->0805]
+>> Source:JHM Destination:KOA Start_Time:2344
+[JHM->HNL:0758->0830][HNL->KOA:1020->1103]
+>> Source:MKK Destination:ITO Start_Time:1720
+[MKK->HNL:1820->1845][HNL->ITO:0525->0616]
+>> Source:OGG Destination:HNL Start_Time:1132
+[OGG->HNL:1300->1334]
+>> Source:LNY Destination:ITO Start_Time:1012
+[LNY->ITO:1050->1529]
+>> Source:ITO Destination:MKK Start_Time:0517
+[ITO->HNL:0643->0730][HNL->MKK:0825->0850]
+>> Source:OGG Destination:LNY Start_Time:1445
+[OGG->HNL:1512->1546][HNL->LNY:1720->1750]
+>> Source:ITO Destination:LIH Start_Time:0320
+[ITO->LIH:0643->0857]
+
+Failed to find a flight schedule for 0 out of 10 customers
+Elapsed times: 2 (millsec) for planning, 4 (millisec) for scheduling
+Memory consumption: 3964680 bytes
+Total CPU time consumed by the thread: 72 (millsec)

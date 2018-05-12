@@ -1,0 +1,15 @@
+Airports:
+    column 1: airport name
+    column 2: connection time
+
+Flights:
+    column 1: departure airport name
+    column 2: arrival airport name
+    column 3: departure time
+    column 4: arrival time
+
+Customers:
+    column 1: departure airport name
+    column 2: arrival airport name
+    column 3: earliest departure time
+
