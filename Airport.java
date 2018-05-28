@@ -7,13 +7,18 @@ import java.util.*;
 public class Airport
 {
 
-  Strint port;
-  String connectTime;
+  public String port;
+  public String connectTime;
 
   public Airport(String port, String connectTime) {
     this.port = port;
     this.connectTime = connectTime;
   }	// constructor
+
+  public Airport(Airport port2){
+    port = port2.port;
+    connectTime = port2.connectTime;
+  }
 
   public void print() {}
 
