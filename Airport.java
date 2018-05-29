@@ -15,16 +15,24 @@ public class Airport
 
   public Airport(String portName, String connectTime) {
     this.portName = portName;
-    int min = Integer.parseInt(connectTime);
-    int hour = min/100;
-    min = min%100;
-    this.connectTime = 60*hour + min;
+    int time = 60 * Integer.parseInt(connectTime.substring(0,2));
+    time = time + Integer.parseInt(connectTime.substring(2));
+    this.connectTime = time;
     flights = new LinkedList<Flight>();
     index = num++;
   }	// constructor
 
-  public addFlight(Flight flt){
+  public void addFlight(Flight flt){
     flights.add(flt);
+  }
+
+  public void update(int time){
+    for (Flight flt : flights)
+      flt.update(time);
+  }
+
+  public LinkedList<Flight> getFlights(){
+    return flights;
   }
 
   public String getPort(){
@@ -35,7 +43,7 @@ public class Airport
     return connectTime;
   }
 
-  public int getIndex(int index){
+  public int getIndex(){
     return index;
   }
 

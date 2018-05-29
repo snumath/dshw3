@@ -27,13 +27,14 @@ public class Planner {
       StoA.put(port.getPort(), port);
     }
 
-    ListIterator<Flight> iter = fltList.listIterator();
+    //ListIterator<Flight> iter = fltList.listIterator();
+    Iterator<Flight> iter = fltList.iterator();
 		while (iter.hasNext()) {
 			Flight flt = iter.next();
-			Airport port = hash.get(flt.getSrc());
+			Airport port = StoA.get(flt.getSrc());
 			if (port == null)
 				continue;
-			if (flt.getSrc().equals(port.getPort())){
+			if (flt.getSrc().equals(port.getPort()) == true){
 				port.addFlight(flt);
 				iter.remove();
 			}
@@ -43,10 +44,9 @@ public class Planner {
   public Itinerary Schedule(String start, String end, String departure) {
     for (int i = 0; i < numPort; ++i){
       flights[i] = null;
-      visited[i] = false;
+      remainder[i] = true;
     }
 
-    int time;
     Airport src = StoA.get(start);
     Airport dest = StoA.get(end);
     if (src == null || dest == null) return new Itinerary();
@@ -54,9 +54,14 @@ public class Planner {
     int startIndex = src.getIndex();
     int endIndex = dest.getIndex();
 
-    remainder[startIndex] = false;
+    int time = 60 * Integer.parseInt(departure.substring(0,2));
+    time = time + Integer.parseInt(departure.substring(2));
 
-    while (remainder[endIndex]){
+    remainder[startIndex] = false;
+    flights[startIndex] = new Flight(start, start, time, time - src.getTime());
+    update(src);
+
+    while (remainder[endIndex] == true){
       Flight flt = findMin();
       if (flt == null) return new Itinerary();
 
@@ -71,38 +76,43 @@ public class Planner {
 
     while (true){
       route.add(node);
-      node = flights[hash.get(flt.getSrc).getIndex()];
-      if (flt.getSrc.equals(start)) break;
+      node = flights[StoA.get(node.getSrc()).getIndex()];
+      if (node.getSrc().equals(start))
+        break;
     }
 
-    if (flt.getSrc() != flt.getDest()) route.add(flt);
+    if (node.getSrc() != node.getDest()) route.add(node);
 
     return new Itinerary(route);
   }
 
   private void update(Airport port){
     int time = flights[port.getIndex()].getDtime() + port.getTime();
-    Flight value;
+    int index;
+    port.update(time);
 
     LinkedList<Flight> route = port.getFlights();
 
     for (Flight node : route){
       Airport dest = StoA.get(node.getDest());
-      value = flights[dest.getIndex()];
 
       if (dest == null) continue;
-      if (value == null) flights[dest.getIndex()] = node;
-      else if (node.getDtime() > value.getDtime()) flights[dest.getIndex()] = node;
+      index = dest.getIndex();
+      if (flights[index] == null)
+        flights[index] = node;
+      if (node.getDtime() < flights[index].getDtime())
+        flights[index] = node;
     }
   }
 
   private Flight findMin(){
     Flight result = null;
-    Flight value = null;
     for (int i = 0; i < numPort; ++i){
-      value = flights[i];
-      if (value != null && queue[i] == true){
-        if (result == null) result = value;
+      if (flights[i] != null && remainder[i] == true){
+        if (result == null)
+          result = flights[i];
+        else if(result.getDtime() > flights[i].getDtime())
+          result = flights[i];
       }
     }
     return result;

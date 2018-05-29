@@ -22,6 +22,15 @@ public class Flight
     dtimeName = dtime;
   }
 
+  public Flight(String src, String dest, int stime, int dtime) {
+    this.src = src;
+    this.dest = dest;
+    this.stime = stime;
+    this.dtime = dtime;
+    stimeName = "10000000";
+    dtimeName = "10000000";
+  }
+
   private int HourToMin(int time){
     int day = time/10000;
     int hour = time%10000;
@@ -42,16 +51,23 @@ public class Flight
     return stime;
   }
 
-  public void setStime(int time){
-    stime = time;
-  }
-
   public int getDtime(){
     return dtime;
   }
 
-  public void setDtime(int time){
-    dtime = time;
+  public void update(int time){
+    int day = time/1440;
+    stime = stime % 1440;
+    dtime = dtime % 1440;
+    stime += day * 1440;
+    dtime += day * 1440;
+    if(stime < time){
+      stime += 1440;
+      dtime += 1440;
+    }
+    if(dtime < stime){
+      dtime += 1440;
+    }
   }
 
   public void print() {

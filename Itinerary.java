@@ -28,8 +28,8 @@ public class Itinerary
       System.out.println("No Flight Schedule Found.");
       return;
     }
-    for (Flight transfer : schedule)
-      transfer.print();
+    for (int i = schedule.size() - 1; i >= 0; --i)
+      schedule.get(i).print();
     System.out.println("");
   }
 }
