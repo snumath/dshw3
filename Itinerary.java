@@ -7,22 +7,24 @@ public class Itinerary
 {
   
   public LinkedList<Flight> schedule;
+  boolean existence = false;
 
   // constructor
   public Itinerary() {}
 
   public Itinerary(LinkedList<Flight> route){
     schedule = route;
+    existence = true;
   }
 
   public boolean isFound(){
-    return schedule.isEmpty();
+    return existence;
   }
 
 
   public void print() {
 
-    if (schedule.isEmpty()){
+    if (existence == false){
       System.out.println("No Flight Schedule Found.");
       return;
     }
@@ -30,7 +32,4 @@ public class Itinerary
       transfer.print();
     System.out.println("");
   }
-
-
-
 }

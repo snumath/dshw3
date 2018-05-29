@@ -7,33 +7,36 @@ import java.util.*;
 public class Airport
 {
 
+  private LinkedList<Flight> flights;
   private String portName;
   private int connectTime;
+  private int index;
+  static int num = 0;
 
   public Airport(String portName, String connectTime) {
     this.portName = portName;
-    this.connectTime = Integer.parseInt(connectTime);
+    int min = Integer.parseInt(connectTime);
+    int hour = min/100;
+    min = min%100;
+    this.connectTime = 60*hour + min;
+    flights = new LinkedList<Flight>();
+    index = num++;
   }	// constructor
 
-  public Airport(Airport port){
-    portName = port.getPort();
-    connectTime = port.getTime();
+  public addFlight(Flight flt){
+    flights.add(flt);
   }
 
   public String getPort(){
     return portName;
   }
 
-  public void setPort(String portName){
-    this.portName = portName;
-  }
-
   public int getTime(){
     return connectTime;
   }
 
-  public void setTime(int connectTime){
-    this.connectTime = connectTime;
+  public int getIndex(int index){
+    return index;
   }
 
   public void print() {}
