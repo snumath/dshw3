@@ -41,6 +41,36 @@
                     "message": 5
                 }
             }
+        },
+        {
+            "label": "run",
+            "command": "javac",
+            "args":[
+                "MainAir.java",
+                "&&",
+                "java",
+                "MainAir",
+                "./public/Hawaiian-airports.txt",
+                "./public/Hawaiian-flights.txt",
+                "./public/Hawaiian-customers10.txt",
+                ">",
+                "ticketsTest01.out"
+            ],
+            "group": "build",
+            "problemMatcher":{
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
         }
-    ]
+   ]
 }

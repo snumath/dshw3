@@ -1,8 +1,11 @@
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
+// @TODO
+// Make path: using Flight,Flight
 
 // Airline Travel Scheduler - Planner
 // Bongki Moon (bkmoon@snu.ac.kr)
@@ -13,10 +16,9 @@ public class Planner {
   public LinkedList<Flight> flightList;
   private LinkedList<Airport> remainder;
   private Map<String, Integer> dist;
-  private Map<String, String> path;
   private Map<String, Integer> wait;
-
-  private Map<String, int[]> find;
+  private Map<String, Flight> path;
+  private Map<String, LinkedList<int[]>> find;
 
 
   // constructor
@@ -26,67 +28,131 @@ public class Planner {
     remainder = new LinkedList<Airport>();
     dist = new HashMap<String, Integer>(portList.size());
     wait = new HashMap<String, Integer>(portList.size());
+    find = new HashMap<String, LinkedList<int[]>>();
+    path = new HashMap<String, Flight>();
+    
 
-    for (Airport port : portList)
+    for (Airport port : portList){
       wait.put(port.getPort(), port.getTime());
+    }
 
-    for (Flight flt : fltList){
-      find.put(flt.getSrc() + flt.getDest(), new int[]{flt.getStime(), flt.getDtime()});
+
+    Iterator<Flight> it = fltList.iterator();
+    Flight tempFlight;
+
+    while(it.hasNext()){
+      tempFlight = it.next();
+      String tempString = tempFlight.getSrc() + tempFlight.getDest();
+      LinkedList<int[]> findTemp = new LinkedList<int[]>();
+      findTemp.add(new int[]{tempFlight.getStime(), tempFlight.getDtime()});
+      while(tempString == tempFlight.getSrc() + tempFlight.getDest()){
+        findTemp.add(new int[]{tempFlight.getStime(), tempFlight.getDtime()});
+        tempFlight = it.next();
+      }
+      find.put(tempString, findTemp);
     }
   }
 
   public Itinerary Schedule(String start, String end, String departure) {
     Airport tempPort;
+    Flight tempFlight;
     String src;
     String dest;
     int time;
     int alt;
 
     initPath();
-    dist.put(start, 0);
     time = Integer.parseInt(departure);
+    alt = time/100;
+    time = time%100;
+    time = 60 * alt + time;
+    dist.put(start, time);
 
+    for (Airport port : remainder){
+      if (port.getPort() == start){
+        tempPort = port;
+        remainder.remove(port);
+      }
+    }
+
+    for (Iterator<Airport> iter = remainder.iterator(); iter.hasNext();){
+      Airport port = iter.next();
+      if (port.getPort() == start) {
+        iter.remove();
+      }
+    }
+
+    for (Airport nbd : remainder){
+      LinkedList<int[]> timeTable = find.get(start + nbd.getPort());
+
+      if (timeTable != null){
+
+        int startCompTime;
+        int endCompTime;
+
+        int tempTime = 2000000000;
+        int compTime = 2000000000;
+
+        for(int[] timeSet : timeTable){
+          startCompTime = timeSet[0];
+          endCompTime = timeSet[1];
+
+          compTime = endCompTime;
+          if (startCompTime < time) compTime += 1440;
+
+          if (compTime < tempTime){
+            tempTime = compTime;
+          }
+        }
+        dist.put(nbd.getPort(), time + compTime);
+      }
+    }
+    
     while (!remainder.isEmpty()) {
-      tempPort = remainder.poll(); // Change to make findMin: Airport findMin()
-      src = tempPort.getPort();
+      tempPort = findMin(remainder);
+      System.out.println(tempPort.getPort());
+      dest = tempPort.getPort();
       for (Airport nbd : remainder){
-        alt = dist.get(src) + dist_between(tempPort, nbd, time);
-        if (alt < dist.get(nbd)){
-          dist.put(nbd.getPort(), alt);
-          path.put(nbd.getPort(), tempPort.getPort());
+        src = nbd.getPort();
+        if (find.get(src + dest) != null){
+          time = dist.get(src)%1440;
+          tempFlight = nearFlight(nbd, tempPort, time);
+          alt = dist.get(src) + dist_between(tempFlight);
+          System.out.println(alt);
+          if (alt < dist.get(dest)){
+            System.out.println(1);
+            dist.put(dest, alt);
+            path.put(dest, tempFlight);
+          }
         }
       }
     }
 
+
     LinkedList<Flight> route = new LinkedList<Flight>();
 
     dest = end;
-    src = path.get(dest);
-    if (src == null){
+    tempFlight = path.get(dest);
+    if (tempFlight == null){
       Itinerary trash = new Itinerary();
       return trash;
     }
 
-    time = Integer.parseInt(departure);
-    while (src != start) {
-      Flight prev = backTrack(src, dest, time);
-      route.add(prev);
-      time = prev.getDtime();
-      dest = src;
-      src = path.get(dest);
+    while (tempFlight.getSrc() != start){
+      route.add(tempFlight);
 
-      if (src == null){
+      dest = tempFlight.getSrc();
+      tempFlight = path.get(dest);
+
+      if (tempFlight == null){
         Itinerary trash = new Itinerary();
         return trash;
       }
     }
 
-    Flight prev = backTrack(src, dest, time);
-    route.add(prev);
+    route.add(tempFlight);
 
-    //Collections.reverse(route);
     Itinerary schedule = new Itinerary(route);
-
     return schedule;
   }
 
@@ -99,13 +165,17 @@ public class Planner {
     }
   }
 
-  private int dist_between(Airport u, Airport v, int startTime){
-    // @TODO
-    // Define distance
+  private int dist_between(Flight flt){
+    int a = flt.getStime();
+    int b = flt.getDtime();
+    int c = b - a;
 
-    return 2000000001;
+    if (c < 0) c += 1440;
+
+    return c;
   }
 
+  /*
   private Flight backTrack(String start, String end, int departure){
     // @TODO
     // Find Flight 
@@ -115,8 +185,60 @@ public class Planner {
     Flight value = new Flight(start, end, startTime, endTime);
     return value;
   }
+  */
+
+  private Airport findMin(LinkedList<Airport> rem){
+    Iterator<Airport> iterValue = rem.iterator();
+    Airport value = rem.getLast();
+    Airport port;
+    int comp;
+    int distance = 2000000000;
+
+    for(Iterator<Airport> iter = rem.iterator(); iter.hasNext();) {
+      port = iter.next();
+      comp = dist.get(port.getPort());
+      if (comp < distance){
+        distance = comp;
+        value = port;
+      }
+    }
+
+    rem.remove(value);
+    return value;
+  }
+
+  private Flight nearFlight(Airport start, Airport end, int time){
+    LinkedList<int[]> timeTable = find.get(start.getPort() + end.getPort());
+    int startTime = 0;
+    int endTime = 0;
+
+    int startCompTime;
+    int endCompTime;
+
+    int tempTime = 2000000000;
+    int compTime;
+
+    for(int[] timeSet : timeTable){
+      startCompTime = timeSet[0];
+      endCompTime = timeSet[1];
+
+      compTime = endCompTime;
+      if (startTime < time) compTime += 1440;
+
+      if (compTime < tempTime){
+        tempTime = compTime;
+        startTime = startCompTime;
+        endTime = endCompTime;
+      }
+    }
+    Flight value = new Flight(start.getPort(), end.getPort(), startTime, endTime);
+    return value;
+  }
 
 }
+
+
+
 
 /*
 

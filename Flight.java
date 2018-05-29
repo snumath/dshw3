@@ -19,8 +19,8 @@ public class Flight
   public Flight(String src, String dest, String stime, String dtime) {
     this.src = src;
     this.dest = dest;
-    this.stime = Integer.parseInt(stime);
-    this.dtime = Integer.parseInt(dtime);
+    this.stime = HourToMin(Integer.parseInt(stime));
+    this.dtime = HourToMin(Integer.parseInt(dtime));
   }
 
   public Flight(String src, String dest, int stime, int dtime){
@@ -30,6 +30,31 @@ public class Flight
     this.dtime = dtime;
   }
 
+
+  private int HourToMin(int time){
+    int day = time/10000;
+    int hour = time%10000;
+    hour = hour/100;
+    int min = time%100;
+    return 1440*day + 60*hour + min;
+  }
+
+  private int MinToHour(int time){
+    int day = time/1440;
+    int hour = time/60;
+    int min = time%60;
+
+    if (min == 60){
+      min = 0;
+      hour++;
+    }
+
+    if (hour == 0){
+      hour = 24;
+      day--;
+    }
+    return 10000*day + 100*hour + min;
+  }
 
   public String getSrc(){
     return src;
@@ -64,10 +89,14 @@ public class Flight
   }
 
   public void print() {
+
+    int a = MinToHour(stime);
+    int b = MinToHour(dtime);
+
     System.out.print("[" + src + "->" + dest + ":");
-    if (stime < 1000) System.out.print("0");
+    if (a < 1000) System.out.print("0");
     System.out.print(stime + "->");
-    if (dtime < 1000) System.out.print("0");
+    if (b < 1000) System.out.print("0");
     System.out.print(dtime + "]");
   }
 
