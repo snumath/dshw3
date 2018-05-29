@@ -7,17 +7,33 @@ import java.util.*;
 public class Airport
 {
 
-  public String port;
-  public String connectTime;
+  private String portName;
+  private int connectTime;
 
-  public Airport(String port, String connectTime) {
-    this.port = port;
-    this.connectTime = connectTime;
+  public Airport(String portName, String connectTime) {
+    this.portName = portName;
+    this.connectTime = Integer.parseInt(connectTime);
   }	// constructor
 
-  public Airport(Airport port2){
-    port = port2.port;
-    connectTime = port2.connectTime;
+  public Airport(Airport port){
+    portName = port.getPort();
+    connectTime = port.getTime();
+  }
+
+  public String getPort(){
+    return portName;
+  }
+
+  public void setPort(String portName){
+    this.portName = portName;
+  }
+
+  public int getTime(){
+    return connectTime;
+  }
+
+  public void setTime(int connectTime){
+    this.connectTime = connectTime;
   }
 
   public void print() {}

@@ -9,18 +9,20 @@ public class Itinerary
   public LinkedList<Flight> schedule;
 
   // constructor
-  Itinerary() {
+  public Itinerary() {}
+
+  public Itinerary(LinkedList<Flight> route){
+    schedule = route;
   }
 
-  public boolean isFound() {
-    if (schedule.isEmpty()) return false;
-
-    return true;
+  public boolean isFound(){
+    return schedule.isEmpty();
   }
+
 
   public void print() {
 
-    if (isFound()){
+    if (schedule.isEmpty()){
       System.out.println("No Flight Schedule Found.");
       return;
     }
